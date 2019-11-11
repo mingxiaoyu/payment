@@ -4,17 +4,11 @@ using Newtonsoft.Json;
 namespace Essensoft.AspNetCore.Payment.Alipay.Domain
 {
     /// <summary>
-    /// AlipayOpenPublicFollowingFollowModel Data Structure.
+    /// AlipaySocialAntforestEnergyQueryModel Data Structure.
     /// </summary>
     [Serializable]
-    public class AlipayOpenPublicFollowingFollowModel : AlipayObject
+    public class AlipaySocialAntforestEnergyQueryModel : AlipayObject
     {
-        /// <summary>
-        /// 关注来源ID
-        /// </summary>
-        [JsonProperty("source_id")]
-        public string SourceId { get; set; }
-
         /// <summary>
         /// 蚂蚁统一会员ID
         /// </summary>

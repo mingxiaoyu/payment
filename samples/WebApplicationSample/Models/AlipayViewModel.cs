@@ -167,7 +167,19 @@ namespace WebApplicationSample.Models
         [Display(Name = "out_request_no")]
         public string OutRequestNo { get; set; }
     }
-    
+
+    public class AlipayTradeCloseViewModel
+    {
+        [Display(Name = "out_trade_no")]
+        public string OutTradeNo { get; set; }
+
+        [Display(Name = "trade_no")]
+        public string TradeNo { get; set; }
+
+        [Display(Name = "notify_url")]
+        public string NotifyUrl { get; set; }
+    }
+
     public class AlipayTransferViewModel
     {
         [Required]
@@ -175,16 +187,28 @@ namespace WebApplicationSample.Models
         public string OutBizNo { get; set; }
 
         [Required]
-        [Display(Name = "payee_account")]
-        public string PayeeAccount { get; set; }
+        [Display(Name = "trans_amount")]
+        public string TransAmount { get; set; }
 
         [Required]
-        [Display(Name = "payee_type")]
-        public string PayeeType { get; set; }
+        [Display(Name = "product_code")]
+        public string ProductCode { get; set; }
 
         [Required]
-        [Display(Name = "amount")]
-        public string Amount { get; set; }
+        [Display(Name = "biz_scene")]
+        public string BizScene { get; set; }
+
+        [Required]
+        [Display(Name = "payee_info_identity")]
+        public string PayeeIdentity { get; set; }
+
+        [Required]
+        [Display(Name = "payee_info_identity_type")]
+        public string PayeeIdentityType { get; set; }
+
+        [Required]
+        [Display(Name = "payee_info_name")]
+        public string PayeeName { get; set; }
 
         [Display(Name = "remark")]
         public string Remark { get; set; }
@@ -192,21 +216,30 @@ namespace WebApplicationSample.Models
 
     public class AlipayTransQueryViewModel
     {
+        [Display(Name = "product_code")]
+        public string ProductCode { get; set; }
+
+        [Display(Name = "biz_scene")]
+        public string BizScene { get; set; }
+
         [Display(Name = "out_biz_no")]
         public string OutBizNo { get; set; }
 
         [Display(Name = "order_id")]
         public string OrderId { get; set; }
+
+        [Display(Name = "pay_fund_order_id")]
+        public string PayFundOrderId { get; set; }
     }
 
-    public class AlipayBillDownloadurlQueryViewModel
+    public class AlipayAccountQueryViewModel
     {
         [Required]
-        [Display(Name = "bill_type")]
-        public string BillType { get; set; }
+        [Display(Name = "alipay_user_id")]
+        public string AlipayUserId { get; set; }
 
         [Required]
-        [Display(Name = "bill_date")]
-        public string BillDate { get; set; }
+        [Display(Name = "account_type")]
+        public string AccountType { get; set; }
     }
 }

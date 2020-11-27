@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace Essensoft.AspNetCore.Payment.Alipay
 {
-    /// <summary>
-    /// 符合Alipay习惯的纯字符串字典结构。
-    /// </summary>
     public class AlipayDictionary : Dictionary<string, string>
     {
         private const string DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -52,7 +49,7 @@ namespace Essensoft.AspNetCore.Payment.Alipay
             }
             else if (value is bool?)
             {
-                strValue = (value as bool?).Value.ToString().ToLower();
+                strValue = (value as bool?).Value.ToString().ToLowerInvariant();
             }
             else
             {

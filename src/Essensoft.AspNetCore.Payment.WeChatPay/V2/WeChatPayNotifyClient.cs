@@ -29,8 +29,7 @@ namespace Essensoft.AspNetCore.Payment.WeChatPay.V2
                 throw new ArgumentNullException(nameof(request));
             }
 
-            request.Body.Seek(0, SeekOrigin.Begin);
-            using (var reader = new StreamReader(request.Body, Encoding.UTF8))
+            using (var reader = new StreamReader(request.Body, Encoding.UTF8, true, 1024, true))
             {
                 var body = await reader.ReadToEndAsync();
                 return await ExecuteAsync<T>(body, options);
@@ -56,7 +55,7 @@ namespace Essensoft.AspNetCore.Payment.WeChatPay.V2
 
             if (string.IsNullOrEmpty(options.Key))
             {
-                throw new ArgumentNullException(nameof(options.Key));
+                throw new WeChatPayException("options.Key is Empty!");
             }
 
             var parser = new WeChatPayNotifyXmlParser<T>();
@@ -79,7 +78,7 @@ namespace Essensoft.AspNetCore.Payment.WeChatPay.V2
 
         #region Common Method
 
-        private void CheckNotifySign(WeChatPayNotify notify, WeChatPayOptions options)
+        private static void CheckNotifySign(WeChatPayNotify notify, WeChatPayOptions options)
         {
             if (string.IsNullOrEmpty(notify.Body))
             {

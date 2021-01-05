@@ -29,12 +29,12 @@ namespace Essensoft.AspNetCore.Payment.Alipay
 
             if (string.IsNullOrEmpty(options.SignType))
             {
-                throw new ArgumentNullException(nameof(options.SignType));
+                throw new AlipayException("options.SignType is Empty!");
             }
 
             if (string.IsNullOrEmpty(options.AlipayPublicKey))
             {
-                throw new ArgumentNullException(nameof(options.AlipayPublicKey));
+                throw new AlipayException("options.AlipayPublicKey is Empty!");
             }
 
             var parameters = GetParameters(request);
@@ -92,12 +92,12 @@ namespace Essensoft.AspNetCore.Payment.Alipay
 
             if (string.IsNullOrEmpty(options.SignType))
             {
-                throw new ArgumentNullException(nameof(options.SignType));
+                throw new AlipayException("options.SignType is Empty!");
             }
 
             if (string.IsNullOrEmpty(options.AlipayPublicKey))
             {
-                throw new ArgumentNullException(nameof(options.AlipayPublicKey));
+                throw new AlipayException("options.AlipayPublicKey is Empty!");
             }
 
             var notify = AlipayDictionaryParser.Parse<T>(parameters);
@@ -118,7 +118,7 @@ namespace Essensoft.AspNetCore.Payment.Alipay
 
         #region Common Method
 
-        private void CheckNotifySign(IDictionary<string, string> dictionary, AlipayOptions options)
+        private static void CheckNotifySign(IDictionary<string, string> dictionary, AlipayOptions options)
         {
             if (dictionary == null || dictionary.Count == 0)
             {
